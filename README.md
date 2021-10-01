@@ -15,7 +15,7 @@ The NFS Server exposes folders:
 - /var/nfs/pv1
 - /var/nfs/pv2 
 
-NFS Server setup [here](https://github.com/wwwted/Oracle-Cloud/blob/master/nfs.md)
+NFS Server setup [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md)
 
 ##### Demos: 
 - [MySQL using deployment with persitent volumes](https://github.com/wwwted/Kubernetes/blob/master/k8s_mysql.md)
