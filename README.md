@@ -18,6 +18,6 @@ The NFS Server exposes folders:
 NFS Server setup [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md)
 
 ##### Demos: 
-- [MySQL using deployment with persitent volumes](https://github.com/wwwted/Kubernetes/blob/master/k8s_mysql.md)
+- [MySQL using deployment with persistent volumes](https://github.com/wwwted/Kubernetes/blob/master/k8s_mysql.md)
 - [InnoDB Cluster using StatefulSets](https://github.com/wwwted/Kubernetes/blob/master/k8s_innodb_cluster.md)
 - [InnoDB Cluster using our Operator](https://github.com/wwwted/Kubernetes/blob/master/k8s_innodb_cluster_operator.md)
