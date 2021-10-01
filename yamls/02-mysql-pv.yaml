@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    server: 10.0.0.50
+    server: 10.0.0.159
     path: "/var/nfs/pv0"
 ---
 apiVersion: v1
@@ -27,7 +27,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    server: 10.0.0.50
+    server: 10.0.0.159
     path: "/var/nfs/pv1"
 ---
 apiVersion: v1
@@ -43,6 +43,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    server: 10.0.0.50
+    server: 10.0.0.159
     path: "/var/nfs/pv2"
 

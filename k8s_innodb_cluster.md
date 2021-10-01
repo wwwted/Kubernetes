@@ -5,17 +5,17 @@ This demo was created on Oracle Cloud (OCI) but vanilla Kubernetes and NFS was u
 
 
 ## Setup NFS Server to act as your persistent volume.
-Setup a NFS Server for your persistent volumes, howto [here](https://github.com/wwwted/Oracle-Cloud/blob/master/nfs.md)
+Setup a NFS Server for your persistent volumes, howto [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md)
 If you are using a public cloud provider you can most likely use dynamic storage options for handling of PV.
 
-In bellow example I have a NFS Server on IP: 10.0.0.50
+In bellow example I have a NFS Server on IP: 10.0.0.159
 This NFS exposes folders:
 - /var/nfs/pv0
 - /var/nfs/pv1
 - /var/nfs/pv2
 
 ## Kubernetes configuration
-You can look at configuration for kubernetes in [yamls](https://github.com/wwwted/Oracle-Cloud/tree/master/kubernetes-mysql/yamls) folder.
+You can look at configuration for kubernetes in [yamls](https://github.com/wwwted/Kubernetes/tree/master/yamls) folder.
 
 First we are creating three persistent volumes (pv0-pv2) for our InnoDB Cluster nodes.
 We are specifying that this volume can only be accessed by one node (ReadWriteOnce)
