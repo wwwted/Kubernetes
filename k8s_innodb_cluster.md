@@ -100,6 +100,7 @@ kubectl exec -it  mysql-innodb-cluster-0 -- mysqlsh -uidcAdmin -pidcAdmin -S/var
 and then configure the instances:
 ```
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-0:3306',{password:'idcAdmin',interactive:false,restart:true});
+(since above command will trigger a restart of MySQL you might need to connect again after running above)
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-1:3306',{password:'idcAdmin',interactive:false,restart:true});
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-2:3306',{password:'idcAdmin',interactive:false,restart:true});
 ```
