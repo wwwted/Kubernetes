@@ -176,4 +176,4 @@ ls /var/nfs/pv[0,1,2]/
 - Whenever deploying new stuff look at: watch kubectl get all -o wide
 - Good training on Kubernetes: https://www.youtube.com/user/wenkatn/playlists
 - Good training on Kubernetes: https://github.com/justmeandopensource
-- 
+- Good video on Kubernetes: https://www.youtube.com/watch?v=X48VuDVv0do
