@@ -163,7 +163,7 @@ kubectl delete -f yamls/02-mysql-pv.yaml
 ```
 Make sure all is deleted:
 ```
-kubectl get pv,pv
+kubectl get pv,pvc,pods,svc
 kubectl get all -o wide
 ```
 Remember to also empty out the datadir on NFS between tests:
@@ -176,3 +176,4 @@ ls /var/nfs/pv[0,1,2]/
 - Whenever deploying new stuff look at: watch kubectl get all -o wide
 - Good training on Kubernetes: https://www.youtube.com/user/wenkatn/playlists
 - Good training on Kubernetes: https://github.com/justmeandopensource
+- 
