@@ -100,6 +100,7 @@ kubectl exec -it  mysql-innodb-cluster-0 -- mysqlsh -uidcAdmin -pidcAdmin -S/var
 and then configure the instances:
 ```
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-0:3306',{password:'idcAdmin',interactive:false,restart:true});
+(since above command will trigger a restart of MySQL you might need to connect again after running above)
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-1:3306',{password:'idcAdmin',interactive:false,restart:true});
 dba.configureInstance('idcAdmin@mysql-innodb-cluster-2:3306',{password:'idcAdmin',interactive:false,restart:true});
 ```
@@ -162,7 +163,7 @@ kubectl delete -f yamls/02-mysql-pv.yaml
 ```
 Make sure all is deleted:
 ```
-kubectl get pv,pv
+kubectl get pv,pvc,pods,svc
 kubectl get all -o wide
 ```
 Remember to also empty out the datadir on NFS between tests:
@@ -175,3 +176,4 @@ ls /var/nfs/pv[0,1,2]/
 - Whenever deploying new stuff look at: watch kubectl get all -o wide
 - Good training on Kubernetes: https://www.youtube.com/user/wenkatn/playlists
 - Good training on Kubernetes: https://github.com/justmeandopensource
+- Good video on Kubernetes: https://www.youtube.com/watch?v=X48VuDVv0do

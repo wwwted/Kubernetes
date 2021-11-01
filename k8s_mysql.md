@@ -1,12 +1,13 @@
 # MySQL Deployment using persistent volumes
 
 In this demo we are setting up one MySQL Server using k8s, we will use a deployment and NFS as storage.
+This is just for demo purpose, we will use secrets to store MySQL passwords in a safe manner later on when setting up InnoDB Cluster using our operator.
 
 ## Persistent volumes
 Setup a NFS Server for your persistent volumes, howto [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md)
 If you are using a public cloud provider you can most likely use dynamic storage options for handling of PV.
 
-In bellow examples I have a NFS Server on IP: 10.0.0.159
+In bellow examples I have a NFS Server running on host: 10.0.0.159
 The NFS exposes folder:
 - /var/nfs/pv0
 
@@ -27,9 +28,44 @@ Next we create the MySQL deployment using the resourses created earlier.
 kubectl create -f yamls/01-mysql-pv.yaml
 ```
 
-2) Start MySQL using a deplyments (one MySQL Server using NFS PV)
+2) Start MySQL using a deployments (one MySQL Server using NFS PV)
 ```
 kubectl create -f yamls/01-mysql-deployment.yaml
+```
+
+3) Watch deployment being created
+```
+kubectl get pods --watch
+NAME                     READY   STATUS    RESTARTS   AGE
+mysql-85b796566c-gw2g6   1/1     Running   0          4s
+```
+
+4) Connect to your MySQL instance
+```
+Fetch Name of pod by running:
+kubectl get pods
+
+Then connect to MySQL by running:
+kubectl exec -it mysql-85b796566c-gw2g6 -- mysql -uroot -p_MySQL2020_
+```
+
+5) Create a MySQL user so you can connect from outside Kubernetes:
+```
+Login to MySQL:
+kubectl exec -it mysql-85b796566c-gw2g6 -- mysql -uroot -p_MySQL2020_
+
+Create new MySQL user:
+create user ted@'%' identified by 'Welcome1!';
+grant select on *.* to ted@'%';
+```
+
+6) Connect to MySQL from the outside using port-forwarding
+```
+Start port forwading by running (in a separate terminal):
+kubectl port-forward service/mysql 13306:3306
+
+Connect using MySQL Client:
+mysql -uted -pWelcome1! -hlocalhost -P13306
 ```
 
 Done!
@@ -38,6 +74,7 @@ Done!
 ```
 kubectl delete -f yamls/01-mysql-deployment.yaml 
 kubectl delete -f yamls/01-mysql-pv.yaml
+
 Make sure everything is deleted:
 kubectl get pv,pv
 kubectl get all -o wide
