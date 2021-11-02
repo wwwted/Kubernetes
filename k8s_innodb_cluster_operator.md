@@ -1,7 +1,7 @@
 # InnoDB Cluster on Kubernetes using the InnoDB Cluster Operator
 
-In this demo we are setting up InnDB Cluster on Kubernetes, we will use our new operator and NFS disks as storage (pv).
-This demo is using Kubernetes v1.22 on OL7.9, NFS storage was used as PV so should work for any cloud or on-prem deploymet.
+In this demo we are setting up InnDB Cluster on Kubernetes, we will use our new operator and NFS disks as storage (PV).
+This demo is using Kubernetes v1.22 on OL7.9, NFS storage was used as PV so should work for any cloud or on-prem deployment.
 
 
 ## Setup NFS Server to act as your persistent volume.
