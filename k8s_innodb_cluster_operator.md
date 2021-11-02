@@ -19,8 +19,8 @@ This NFS server exposes folders:
 You can look at configuration for kubernetes in [yamls](https://github.com/wwwted/Kubernetes/tree/master/yamls) folder. The two yaml files for the operator demo are 03-innodb-cluster-operator-pv.yaml and 03-innodb-cluster-operator.yaml
 
 ## Documentation
-MySQL docs: https://dev.mysql.com/doc/mysql-operator/en/
-Github: https://github.com/mysql/mysql-operator
+- MySQL [docs](https://dev.mysql.com/doc/mysql-operator/en/)
+- Project on [Github](https://github.com/mysql/mysql-operator)
 
 ## Deploy the InnoDB Cluster Operator
 ```
@@ -63,7 +63,7 @@ kubectl get secrets
 
 ##### Create PV:
 Now it's time  to create three persistent volumes (pv0-pv2) for our InnoDB Cluster nodes.
-In the yamp file we are specifying that this volume can only be accessed by one node (ReadWriteOnce), We are also specifying that we will use our NFS server for storage.
+In the 03-innodb-cluster-operator-pv.yaml file we are specifying that these PV can only be accessed by one node (ReadWriteOnce), We are also specifying that we will use our NFS server for storage.
 We also need to have matching storageClassName in the both yaml files.
 Name of PV's are not that important, but if you want you can allways create names that match the PVC created by the operator, these are named datadir-mycluster-n (where 'n' starts at 0).
 We will set the storageClassName to "slow" so these PV can only be claimed by PVC with matching storageClass.
@@ -130,7 +130,7 @@ kubectl get services
 kubectl describe service mycluster
 ```
 
-The services for our InnoDB Cluster does not expose any external IP so we need some way to connect to the internal IP. For this demo we will use a simple port-forward. Start a new termainal and run below command:
+The services for our InnoDB Cluster does not expose any external IP so we need some way to connect to the internal IP. For this demo we will use a simple port-forward command. Start a new termainal and run below command:
 ```
 kubectl port-forward service/mycluster 6446:6446
 ```
