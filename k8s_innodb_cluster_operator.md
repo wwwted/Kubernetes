@@ -5,8 +5,8 @@ This demo is using Kubernetes v1.22 on OL7.9, NFS storage was used as PV so shou
 
 
 ## Setup NFS Server to act as your persistent volume.
-Setup a NFS Server for your persistent volumes, howto [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md)
-If you are using a public cloud provider you can most likely use dynamic storage options for handling of PV. Our yaml files on [github](https://github.com/mysql/mysql-operator/tree/trunk/samples) are created for OKE on Oracle Cloud.
+Setup a NFS Server for your persistent volumes, howto [here](https://github.com/wwwted/Kubernetes/blob/master/nfs.md). 
+If you are using a public cloud provider you can most likely use dynamic storage options for handling of PV. Our yaml files on [github](https://github.com/mysql/mysql-operator/tree/trunk/samples) are created for [OKE](https://www.oracle.com/se/cloud-native/container-engine-kubernetes/) on [Oracle Cloud](https://www.oracle.com/se/cloud/).
 
 In bellow example I have a NFS Server on IP: 10.0.0.159
 This NFS exposes folders:
