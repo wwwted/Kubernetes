@@ -165,11 +165,11 @@ mycluster-router-z7q4x   1/1     Running   0          2m26s
 
 ## Remove Cluster and PV/PVS + empty NFS
 ```
-kubectl delete -f 03-innodb-cluster-operator.yaml
+kubectl delete -f yamls/03-innodb-cluster-operator.yaml
 kubectl delete pvc datadir-mycluster-0
 kubectl delete pvc datadir-mycluster-1
 kubectl delete pvc datadir-mycluster-2
-kubectl delete -f 03-innodb-cluster-operator-pv.yaml
+kubectl delete -f yamls/03-innodb-cluster-operator-pv.yaml
 kubectl get pv,pvc
 (+ remeber to delete all data under NFS mounts)
 (optional)
