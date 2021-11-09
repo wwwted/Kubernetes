@@ -47,9 +47,16 @@ Set default namespace to innodb-cluster for the rest of the session:
 ```
 kubectl config set-context --current --namespace=innodb-cluster
 ```
+##### Download the yaml files
+They easiest way is to download the zip file, this can be done by running:
+```
+ wget https://github.com/wwwted/Kubernetes/archive/refs/heads/main.zip
+ unzip main.zip
+ cd Kubernetes-main
+```
 
 ##### Create secret for storing MySQL user password
-Next we need to store the MySQL password in a safe mannaer, let's create a secret. This code should of cource not be shared on git for production setup but for this demo it's not important.
+Next we need to store the MySQL password in a safe manner, let's create a secret. This code should of cource not be shared on git for production setup but for this demo it's not important.
 ```
 kubectl create secret generic  mypwds \
         --from-literal=rootUser=root \
@@ -63,11 +70,10 @@ kubectl get secrets
 
 ##### Create PV:
 Now it's time  to create three persistent volumes (pv0-pv2) for our InnoDB Cluster nodes.
-In the 03-innodb-cluster-operator-pv.yaml file we are specifying that these PV can only be accessed by one node (ReadWriteOnce), We are also specifying that we will use our NFS server for storage.
-We also need to have matching storageClassName in the both yaml files.
-Name of PV's are not that important, but if you want you can allways create names that match the PVC created by the operator, these are named datadir-mycluster-n (where 'n' starts at 0).
-We will set the storageClassName to "slow" so these PV can only be claimed by PVC with matching storageClass.
-More information on PV [here](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+In the 03-innodb-cluster-operator-pv.yaml file we are specifying that these PV can only be accessed by one node (ReadWriteOnce), We are also specifying that we will use our NFS server for storage. We also need to have matching storageClassName in the both yaml files. 
+Name of PV's are not that important, but if you want you can allways create names that match the PVC created by the operator, these are named datadir-mycluster-n (where 'n' starts at 0).  
+We will set the storageClassName to "slow" so these PV can only be claimed by PVC with matching storageClass.  
+More information on PV's [here](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).  
 
 ```
 kubectl create -f yamls/03-innodb-cluster-operator-pv.yaml
@@ -181,6 +187,7 @@ ls /var/nfs/pv[0,1,2]/
 ```
 
 ## Extras
+- Download this project: ```wget https://github.com/wwwted/Kubernetes/archive/refs/heads/main.zip```
 - Install MySQL Client: ```sudo yum install mysql```
 - Install MySQL Shell: ```sudo yum install mysql-shell```
 - More information around InnoDB Cluster [here](https://github.com/wwwted/MySQL-InnoDB-Cluster-3VM-Setup)
