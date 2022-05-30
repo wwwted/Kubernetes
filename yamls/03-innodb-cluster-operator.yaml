@@ -1,12 +1,13 @@
-apiVersion: mysql.oracle.com/v2alpha1
+apiVersion: mysql.oracle.com/v2
 kind: InnoDBCluster
 metadata:
   name: mycluster
 spec:
   instances: 3
+  secretName: mypwds
+  tlsUseSelfSigned: true
   router:
     instances: 1
-  secretName: mypwds
   datadirVolumeClaimTemplate:
     storageClassName: slow
     accessModes:
@@ -14,4 +15,5 @@ spec:
     resources:
       requests:
         storage: 7Gi
+
 
